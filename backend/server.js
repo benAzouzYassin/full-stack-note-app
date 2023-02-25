@@ -1,9 +1,11 @@
+
+require("dotenv").config()
+require("./config/db").conn
+
 const express = require("express")
-const dotenv = require("dotenv").config()
 const goalsRoute = require("./routes/goalsRoute")
-const errorMiddleware = require('./middleware/errorMiddleware')
-const colors = require("colors")
-const db = require("./config/db").conn
+const userRoute = require("./routes/usersRoute")
+const { errorHandler } = require('./middleware/errorMiddleware')
 
 const PORT = process.env.PORT || 8000
 const app = express()
@@ -16,18 +18,17 @@ app.use(express.urlencoded({ extended: false }))
 
 //main route
 app.get("/", (req, res) => {
-    res.send("tis is the landpage")
-
+    res.send("the landpage")
     res.end()
 })
 
 //routes middleWare
 app.use("/api/goals", goalsRoute)
-
+app.use("/api/user", userRoute)
 
 
 //custom error handling for creatingGoal
-app.use(errorMiddleware.createGoalError)
+app.use(errorHandler)
 app.listen(PORT, () => console.log("server started on : " + PORT))
 
 
