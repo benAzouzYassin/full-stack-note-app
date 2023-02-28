@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+.Register--input {
+  @apply w-full rounded-md p-2 focus:outline-blue-400 placeholder:text-gray-400 shadow-sm border-slate-300 border-solid border-[2px];
+}
+.Register--label {
+  @apply flex flex-col items-start  w-[70%] max-w-xl;
+}
+.Register-error {
+  @apply pl-2 text-red-600 text-sm;
+}

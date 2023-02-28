@@ -21,7 +21,7 @@ const registerUser = asyncHandler(async (req, res) => {
             res.status(201).json({
                 "name": userName,
                 "email": newUser.email,
-                'userToken': generateJWT(newUser._id),
+                'token': generateJWT(newUser._id),
             })
         }
         res.end()
@@ -37,10 +37,16 @@ const registerUser = asyncHandler(async (req, res) => {
 const loginUser = asyncHandler(async (req, res) => {
     if (isValidLoign(req)) {
         const [user] = await UserModel.find({ "email": req.body.email })
-        if (await bcrypt.compare(req.body.password, user.password)) {
-            res.json({ "name": user.name, "email": user.email, "token": generateJWT(user._id) })
-        } else {
-            res.send("bad")
+        if (user) {
+            if (await bcrypt.compare(req.body.password, user.password)) {
+                res.json({ "name": user.name, "email": user.email, "token": generateJWT(user._id) })
+            } else {
+
+                throw new Error("wrong password")
+            }
+        }
+        else {
+            throw new Error("user not found")
         }
     } else {
         throw new Error("user info were not provided")
@@ -51,7 +57,7 @@ const loginUser = asyncHandler(async (req, res) => {
 })
 
 // @des showing user informations
-// @route get /api/user/register
+// @route get /api/user/me
 // @access Private
 const gettingUser = asyncHandler(async (req, res) => {
     res.send(req.user)
