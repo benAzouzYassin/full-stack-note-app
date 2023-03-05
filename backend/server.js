@@ -3,8 +3,8 @@ require("dotenv").config()
 require("./config/db").conn
 
 const express = require("express")
-const goalsRoute = require("./routes/goalsRoute")
 const userRoute = require("./routes/usersRoute")
+const notesRoute = require("./routes/notesRoute")
 const cors = require("cors")
 const { errorHandler } = require('./middleware/errorMiddleware')
 
@@ -23,10 +23,9 @@ app.get("/", (req, res) => {
     res.end()
 })
 
-//routes middleWare
-app.use("/api/goals", goalsRoute)
+//routes 
 app.use("/api/user", userRoute)
-
+app.use("/api/notes", notesRoute)
 
 //custom error handling for creatingGoal
 app.use(errorHandler)

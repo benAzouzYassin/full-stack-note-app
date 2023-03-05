@@ -22,6 +22,7 @@ function LandPage() {
             .catch(err => Navigate("/login"))
     }, [])
 
+
     return (<>
         <div className="flex flex-col w-screen h-screen items-center justify-center bg-[#fffff0]">
             <h1 className=" mt-[-200px] text-4xl">hello  {userData?.name}</h1>

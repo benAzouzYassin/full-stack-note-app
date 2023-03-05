@@ -37,7 +37,7 @@ function Login() {
     }
     return (
         <> <form className="flex flex-col gap-2 mt-[-50px] w-screen h-screen justify-center items-center " onSubmit={handleSubmit(onSubmit)}>
-            <h1 className="mb-5 text-3xl font-semibold">Login new user</h1>
+            <h1 className="mb-5 text-3xl font-semibold">User login</h1>
             <label className="Register--label">
                 <input type="text" autoComplete="off" className="Register--input" placeholder="enter your email" {...register("email", { required: true, pattern: /\S+@\S+\.\S+/ })} />
                 <span className="Register-error">{errors.email?.type == "required" ? "Email is required" : ""}</span>
