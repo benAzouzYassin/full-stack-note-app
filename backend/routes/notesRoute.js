@@ -1,5 +1,5 @@
 const router = require("express").Router()
-const { getNotes, updateNote, createNote, deleteNote } = require("../controller/notesController")
+const { getNotes, updateNote, createNote, deleteNote, deleteAllNotes } = require("../controller/notesController")
 const protectRoute = require("../middleware/authMiddleware").protectRoute
 
 // @Route Get /api/notes/
@@ -13,10 +13,17 @@ router.put("/:id", protectRoute, updateNote)
 
 // @Route Post /api/notes/
 // @Private
-router.post("/", protectRoute, createNote)
+router.post("/", (req, res, next) => {
+    console.log(req.headers)
+    next()
+
+}, createNote)
 
 // @Route Post /api/notes/
 // @Private
 router.delete("/", protectRoute, deleteNote)
 
+// @Route Delete /api/notes/all
+// @Private
+router.delete("/all", protectRoute, deleteAllNotes)
 module.exports = router

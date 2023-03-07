@@ -2,7 +2,8 @@ import { BrowserRouter, Routes, Route, useNavigate, Navigate } from "react-route
 import Landpage from "./pages/LandPage"
 import Register from "./pages/Register"
 import Login from "./pages/Login"
-import { useAuth } from "./stores/authStore"
+import CreateNote from "./pages/CreateNote"
+import UpdateNote from "./pages/UpdateNote"
 
 function App() {
 
@@ -12,6 +13,10 @@ function App() {
         <Route path="/" element={<Landpage />}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/register" element={<Register />}></Route>
+        <Route path="/create" element={<CreateNote />}></Route>
+        <Route path="/update" element={<UpdateNote oldText="" />}></Route>
+        <Route path="*" element={<Navigate to="/" />}></Route>
+
       </Routes>
 
     </BrowserRouter>

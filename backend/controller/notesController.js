@@ -13,6 +13,7 @@ const getNotes = asyncHandler(async (req, res) => {
     } catch (error) {
 
         throw new Error("unable to get notes.")
+
     }
     res.end()
 })
@@ -46,6 +47,7 @@ const createNote = asyncHandler(async (req, res) => {
     } else {
         throw new Error("note text was not provided")
     }
+
     res.end()
 })
 
@@ -61,4 +63,9 @@ const deleteNote = asyncHandler(async (req, res) => {
     res.end()
 })
 
-module.exports = { getNotes, updateNote, createNote, deleteNote }
+const deleteAllNotes = asyncHandler(async (req, res) => {
+    const deleted = await NoteModel.deleteMany({ "user": getUserId(req) })
+    res.end()
+})
+
+module.exports = { getNotes, updateNote, createNote, deleteNote, deleteAllNotes }

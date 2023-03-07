@@ -10,3 +10,6 @@
 .Register-error {
   @apply pl-2 text-red-600 text-sm;
 }
+.Note--border {
+  border: black solid 2px;
+}
