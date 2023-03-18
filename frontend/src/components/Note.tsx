@@ -12,8 +12,8 @@ function Note(props: Props) {
     }
     return (
         <div>
-            <div className=" Note--border xl:min-h-[120px] min-h-[80px] rounded-md h-fit  pl-2 pr-2 pb-2 bg-[#fffff0] hover:cursor-pointer hover:scale-95" onClick={handleEdit} >
-                <p className=" pr-4">{props.text}</p>
+            <div className=" Note--border xl:min-h-[120px] min-h-[80px] rounded-md h-fit  pl-2 pr-2 pb-2 bg-[#9ab6dd] hover:cursor-pointer hover:scale-95 text-center pt-3" onClick={handleEdit} >
+                <p className=" pr-4 text-white text-xl">{props.text}</p>
             </div>
         </div>
     )

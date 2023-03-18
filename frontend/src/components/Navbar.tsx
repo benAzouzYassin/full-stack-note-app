@@ -12,9 +12,9 @@ function Navbar() {
     }
 
     return (
-        <div className='items-center flex h-16 w-full bg-slate-200 xl:pl-40 xl:pr-40'>
-            <span className="ml-3 text-lg">{name}</span>
-            <button className="ml-auto mr-3 bg-slate-700 p-2 rounded-lg text-white hover:bg-slate-600" onClick={handleLogout}>logout</button>
+        <div className='items-center flex h-16 w-full bg-black xl:pl-40 xl:pr-40'>
+            <span className="ml-3 text-lg text-white">{name}</span>
+            <button className="ml-auto mr-3 bg-[#FFBD35] p-2 rounded-lg text-black font-semibold hover:bg-[#f7d44c]" onClick={handleLogout}>logout</button>
         </div>
     )
 }
